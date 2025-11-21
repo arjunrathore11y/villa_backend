@@ -56,10 +56,12 @@ module.exports.loginUser = async (req, res) => {
 
     if (result) {
       let token = generateToken(user);
-          res.cookie("token", token, {
-          httpOnly: true,
-          secure: true,      
-          sameSite: "None",   
+
+      // ⭐ FIXED COOKIE
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,       
+        sameSite: "None",
       });
 
       console.log("Logged in user:", user);
@@ -69,7 +71,7 @@ module.exports.loginUser = async (req, res) => {
         token,
         role: user.role,
         email: user.email,
-        name: user.name,
+        fullname: user.fullname,
         id: user._id,
       });
     } else {
