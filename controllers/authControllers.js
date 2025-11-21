@@ -56,10 +56,10 @@ module.exports.loginUser = async (req, res) => {
 
     if (result) {
       let token = generateToken(user);
-      res.cookie("token", token, {
-        httpOnly: true,
-        secure: false,
-        sameSite: "Lax",
+          res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,      
+          sameSite: "None",   
       });
 
       console.log("Logged in user:", user);
