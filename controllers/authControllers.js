@@ -29,10 +29,10 @@ module.exports.registerUser = async (req, res) => {
     const token = generateToken(newUser);
 
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
-    });
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+});
 
     return res
       .status(201)
